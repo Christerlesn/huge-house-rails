@@ -9,6 +9,7 @@ class ClientsController < ApplicationController
         if @client.save
             redirect_to client_path(@client)
         else
+            flash[:error] = "Please fix the error(s) before saving"
             render :new
         end
     end
