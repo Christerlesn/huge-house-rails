@@ -1,0 +1,24 @@
+<h1>Please Sign Up</h1>
+
+<%= form_for (@client) do |c| %>
+    <%= c.label :username %>
+    <%= c.text_field :username %><br>
+    
+    <%= c.label :first_name %>
+    <%= c.text_field :first_name %><br>
+
+    <%= c.label :last_name %>
+    <%= c.text_field :last_name %><br>
+
+    <%= c.label :email %>
+    <%= c.email_field :email %><br>
+
+    <%= c.label :password %>
+    <%= c.password_field :password %><br>
+
+    <%= c.label "Retype Password" %>
+    <%= c.password_field :password_confirmation %><br>
+
+    <%= c.submit "Sign Up" %>
+
+<% end %>
