@@ -10,7 +10,9 @@
     <%= r.label :end_time %>
     <%= r.datetime_field :end_time %><br>
 
-    <h2> Create the Event </h2>
+    <h2> Add Event Details </h2>
+    <p> Select an Event from the following: <%= r.collection_select :event_id, Event.all, :id, :title %></p>
+    <h3> Or Make A New Event:</h3>
     <%= r.fields_for :event do |e| %>
         <%= e.label :title, "Event Title" %>
         <%= e.text_field :title %><br>
