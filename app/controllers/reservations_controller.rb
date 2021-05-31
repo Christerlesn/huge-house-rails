@@ -11,7 +11,6 @@ class ReservationsController < ApplicationController
         if @reservation.save
             redirect_to reservation_path(@reservation)
         else
-            flash[:error] = "Something is wrong with this Reservation. Please fix it before we continue."
             render :new
         end
     end
