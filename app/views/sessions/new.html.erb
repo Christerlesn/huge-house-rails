@@ -1,0 +1,12 @@
+<h1>Log In, and Welcome Back!</h1>
+
+<%= form_for (:client) do |c| %>
+    <%= c.label :username %>
+    <%= c.text_field :username %><br>
+
+    <%= c.label :password %>
+    <%= c.password_field :password %><br>
+
+    <%= c.submit "Log In" %>
+
+<% end %>
