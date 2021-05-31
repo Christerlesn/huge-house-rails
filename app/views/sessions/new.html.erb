@@ -1,5 +1,6 @@
 <h1>Log In, and Welcome Back!</h1>
 
+<%= flash[:error] %>
 <%= form_for (:client) do |c| %>
     <%= c.label :username %>
     <%= c.text_field :username %><br>
