@@ -1,7 +1,12 @@
 <h1> Let's Make a new Reservation Shall We!! </h1>
 
+<%= flash[:error] %>
+
 <h2> Set the Time </h2>
+
 <%= form_for (@reservation) do |r| %>
+    <%= r.hidden_field :client_id %>
+    
     <%= r.label :start_time %>
     <%= r.datetime_field :start_time %><br>
     
