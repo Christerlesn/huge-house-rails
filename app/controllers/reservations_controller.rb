@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     def create
         @reservation = Reservation.new(reservation_params)
         @reservation.client_id = session[:client_id]
-        if @reservation.save
+        if @reservation.save!
             redirect_to reservation_path(@reservation)
         else
             render :new
@@ -17,6 +17,6 @@ class ReservationsController < ApplicationController
 
     private
     def reservation_params
-        params.require(:reservation).permit(:start_time, :end_time, :client_id, :event_id, client_attributes: [:username], event_attributes:[:title, :description])
+        params.require(:reservation).permit(:start_time, :end_time, :client_id, :event_id, event_attributes:[:title, :description])
     end
 end

@@ -2,13 +2,14 @@
 
 <h2> Set the Time </h2>
 
-<%= form_for (@reservation) do |r| %>
+<%= form_for @reservation do |r| %>
     
     <%= r.label :start_time %>
     <%= r.datetime_field :start_time %><br>
     
     <%= r.label :end_time %>
     <%= r.datetime_field :end_time %><br>
+
     <h2> Create the Event </h2>
     <%= r.fields_for :event do |e| %>
         <%= e.label :title, "Event Title" %>
