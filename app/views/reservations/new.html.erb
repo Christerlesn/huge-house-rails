@@ -1,0 +1,24 @@
+<h1> Let's Make a new Reservation Shall We!! </h1>
+
+<h2> Set the Time </h2>
+<%= form_for (@reservation) do |r| %>
+    <%= r.label :start_time %>
+    <%= r.datetime_field :start_time %><br>
+    
+    <%= r.label :end_time %>
+    <%= r.datetime_field :end_time %><br>
+    <h2> Create the Event </h2>
+    <%= r.fields_for :event do |e| %>
+        <%= e.label :title, "Event Title" %>
+        <%= e.text_field :title %><br>
+
+        <%= e.label :description, "Event Details" %>
+        <%= e.text_field :description %><br>
+
+        <%= e.label "Vendors" %>
+        <%= e.collection_select :vendor_id, Vendor.all, :id, :name, prompt: "Select a Vendor" %>
+        <% end %>
+
+    <%= r.submit "Make A Reservation" %>
+
+<% end %>
