@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   resources :reservations
   resources :events do
-    resources :vendors
+    resources :vendors, only: [:new, :index]
   end
+
+  resources :vendors
   
 
   delete '/logout' => 'sessions#destroy'
