@@ -1,0 +1,23 @@
+<h1> New Vendor Form</h1>
+
+<%= form_for(@vendor) do |v| %>
+    <% if params[:event_id] %>
+        <% v.hidden_field :event_id %>
+       <h2>Create a New Vendor for <%= @event.title %></h2>
+        <% else %>
+    <h2> <%= v.label :event_id, "Select The Event" %></h2>
+        <%= v.collection_select :event_id, Event.alpha, :id, :title, include_blank: true %>
+    <% end %>
+
+    <%= v.label :name %>
+    <%= v.text_field :name %>
+
+    <%= v.label :type %>
+    <%= v.text_field :type %>
+
+    <%= v.label :description %>
+    <%= v.text_area :description %>
+
+
+    <%= v.submit %>
+<% end %>

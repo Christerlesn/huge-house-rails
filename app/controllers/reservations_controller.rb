@@ -21,7 +21,7 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = Reservation.all
+        @reservations = Reservation.all.includes(:event)
     end
 
     private
