@@ -1,26 +1,25 @@
 class VendorsController < ApplicationController
 
     def new
-        @vendor = Vendor.new(event_id: params[:event_id])
-        # if @event = Event.find_by_id(params[:event_id])
-        #     @vendor = @event.vendors.build
-        # else
-        #     @vendor = Vendor.new
-        # end
+        @event = Event.find_by_id(params[:event_id])
+        @vendor = @event.vendors.build
     end
 
     def create
         @vendor = Vendor.new(vendor_params)
-        @vendor.save
-        redirect_to vendor_path(@vendor)
-    end
-
-    def index
+        if @vendor.save
+            redirect_to vendor_path(@vendor)
+        else
+            render :new
+        end
     end
 
     def show    
     end
 
+    def index
+
+    end
     private
 
     def vendor_params
