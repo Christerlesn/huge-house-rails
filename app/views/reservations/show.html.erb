@@ -2,3 +2,5 @@
 <h2> Reservation Details</h2><br>
 <p>Time Frame Reserved: <%= @reservation.start_time %> through <%= @reservation.end_time %></p>
 
+<%= link_to "All Reservations", reservations_path %>
+<%= link_to "Add A Vendor", new_event_vendor_path(@reservation.event_id) %>

@@ -11,7 +11,7 @@
     <%= r.datetime_field :end_time %><br>
 
     <h2> Add Event Details </h2>
-    <p> Select an Event from the following: <%= r.collection_select :event_id, Event.all, :id, :title %></p>
+    <p> Select an Event from the following: <%= r.collection_select :event_id, Event.all, :id, :title, include_blank: true %></p>
     <h3> Or Make A New Event:</h3>
     <%= r.fields_for :event do |e| %>
         <%= e.label :title, "Event Title" %>

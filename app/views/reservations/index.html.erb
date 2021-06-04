@@ -3,7 +3,7 @@
 <% @reservations.each do |r| %>
     <ul>
     <li><h2><%= r.event.title %></h2>
-    <%= link_to "Reservation Details", reservation_path(r) %></li>
-    <%= link_to "Add A Vendor", new_event_vendor_path(r.event_id) %>
+    <%= link_to "Reservation Details", reservation_path(r) %>
+    <%= link_to "Add A Vendor", new_event_vendor_path(r.event_id) %></li>
     </ul>
 <% end %>

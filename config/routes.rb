@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   resources :clients, only: [:new, :create, :show]
 
   resources :reservations
+  resources :vendors
+
   resources :events do
     resources :vendors, only: [:new, :create, :index]
   end
-
-  resources :vendors
   
 
   delete '/logout' => 'sessions#destroy'
