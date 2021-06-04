@@ -3,4 +3,5 @@
 <% @reservations.each do |r| %>
     <h2><%= r.event.title %></h2>
     <%= link_to "Reservation Details", reservation_path(r) %><br>
+    <%= link_to "Add Vendor", new_vendor %>
 <% end %>
