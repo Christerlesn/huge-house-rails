@@ -1,7 +1,8 @@
 <h1> List of Reservations at the Huge House </h1>
 
 <% @reservations.each do |r| %>
-    <h2><%= r.event.title %></h2>
-    <%= link_to "Reservation Details", reservation_path(r) %><br>
-    <%= link_to "Add Vendor", new_vendor %>
+    <ul>
+    <li><h2><%= r.event.title %></h2>
+    <%= link_to "Reservation Details", reservation_path(r) %></li>
+    </ul>
 <% end %>

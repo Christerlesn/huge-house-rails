@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   
   resources :clients, only: [:new, :create, :show]
 
-  resources :reservations do
-    resources :events, only: [:new, :create]
+  resources :reservations
+  resources :events do
+    resources :vendors
   end
-  resources :vendors
   
 
   delete '/logout' => 'sessions#destroy'

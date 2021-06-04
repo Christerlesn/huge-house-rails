@@ -9,9 +9,9 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.client_id = session[:client_id]
         if @reservation.save
-            # redirect_to reservation_path(@reservation)
-            redirect_to reservations_path
+            redirect_to reservation_path(@reservation)
         else
+            @reservation.build_event
             render :new
         end
     end

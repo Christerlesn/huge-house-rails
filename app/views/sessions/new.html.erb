@@ -9,5 +9,6 @@
     <%= c.password_field :password %><br>
 
     <%= c.submit "Log In" %>
-
 <% end %>
+<p> If you don't have a log in, please
+<%= link_to "Sign Up ", new_client_path %> here.</p>
