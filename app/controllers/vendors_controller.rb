@@ -14,7 +14,9 @@ class VendorsController < ApplicationController
         end
     end
 
-    def show    
+    def show
+        @event = Event.find_by_id(params[:event_id])
+        @vendor = Vendor.find_by_id(params[:id])
     end
 
     def index
