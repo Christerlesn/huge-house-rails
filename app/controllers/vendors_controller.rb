@@ -20,7 +20,8 @@ class VendorsController < ApplicationController
     end
 
     def index
-        if @event = Event.find_by_id(params[:event_id])
+        if  @event = Event.find_by_id(params[:event_id])
+            #nested
             @vendors = @event.vendors
         else
             @vendors = Vendor.all

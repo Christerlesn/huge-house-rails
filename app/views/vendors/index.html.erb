@@ -1,4 +1,9 @@
-<h1> All the Vendors </h1>
+<% if params[:event_id] %>
+    <h1><%= @event.title %></h1>
+    <% else %>
+<h1> All the Vendors Booked for the Huge House </h1>
+<% end %>
+
 <h4> Vendor Name - Event Title </h4>
 <% @vendors.each do |vendor| %>
     <ul>

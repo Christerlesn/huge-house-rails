@@ -3,5 +3,10 @@
 <h3>Time Frame Reserved: <%= @reservation.start_time %> through <%= @reservation.end_time %></h3>
 <p> <%= @reservation.event.description %></p>
 
-<%= link_to "All Reservations", reservations_path %>
-<%= link_to "Add A Vendor", new_event_vendor_path(@reservation.event_id) %>
+
+<%= link_to "See All Vendors For #{@reservation.event.title}", event_vendors_path(@reservation.event_id) %><br>
+
+<%= link_to "Add A Vendor", new_event_vendor_path(@reservation.event_id) %><br>
+
+<%= link_to "All Reservations", reservations_path %><br>
+
