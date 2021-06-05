@@ -10,7 +10,6 @@ class ClientsController < ApplicationController
             session[:client_id] = @client.id
             redirect_to client_path(@client)
         else
-            flash[:error] = "Please fix the error(s) before saving"
             render :new
         end
     end

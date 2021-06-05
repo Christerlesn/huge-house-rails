@@ -18,7 +18,11 @@
   <footer>
   
   <div>
+  <% if current_user %>
     <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+    <% end %>
+
   </div>
   </footer>
 </html>
