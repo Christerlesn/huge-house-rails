@@ -1,8 +1,8 @@
 <h1> All the Vendors </h1>
-
+<h4> Vendor Name - Event Title </h4>
 <% @vendors.each do |vendor| %>
     <ul>
-    <li><%= link_to vendor.name, vendor_path(vendor) %></li>
+    <li><%= link_to vendor.name, vendor_path(vendor) %> - <%= vendor.event.title %> </li>
     </ul>
 <% end %>
 

@@ -1,0 +1,8 @@
+<h3>ALL EVENTS IN THE HUGE HOUSE</h3>
+<% @events.each do |event| %>
+    <ol>
+    <li><%= event.title %></li>
+    </ol>
+<% end %>
+
+<%= link_to "All Reservations", reservations_path %>

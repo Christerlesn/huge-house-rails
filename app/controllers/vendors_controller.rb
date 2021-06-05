@@ -1,14 +1,19 @@
 class VendorsController < ApplicationController
 
     def new
-        @event = Event.find_by_id(params[:event_id])
-        @vendor = @event.vendors.build
+        if @event = Event.find_by_id(params[:event_id])
+            @vendor = @event.vendors.build
+        else
+            @vendor = Vendor.new
+        end
     end
 
     def create
-        @vendor = Vendor.new(vendor_params)
+        @event = Event.find_by_id(params[:id])
+        @event.vendors = Vendor.new
+        @vendor = @event.vendors.build(vendor_params)
         if @vendor.save
-            redirect_to vendor_path(@vendor)
+          redirect_to vendor_path(@vendor)
         else
             render :new
         end
@@ -20,7 +25,11 @@ class VendorsController < ApplicationController
     end
 
     def index
-        @vendors = Vendor.all
+        if @event = Event.find_by_id(params[:event_id])
+            @vendors = @event.vendors
+        else
+            @vendors = Vendor.all
+        end
     end
     
     private
