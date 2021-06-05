@@ -1,5 +1,7 @@
 <h1>Please Sign Up</h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @client} %>
+
 <p><%= flash[:error] %></p>
 <%= form_for (@client) do |c| %>
     <%= c.label :username %>

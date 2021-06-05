@@ -1,4 +1,7 @@
 <h1>Create a vendor for <%= @vendor.event.title %></h1>
+
+<%= render partial: 'layouts/errors', locals: {object: @vendor} %>
+
 <%= form_for (@vendor) do |v| %>
     <%= v.hidden_field :event_id %>
     

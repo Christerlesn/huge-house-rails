@@ -1,5 +1,7 @@
 <h1> Let's Make a new Reservation Shall We!! </h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @reservation} %>
+
 <h2> Set the Time </h2>
 
 <%= form_for @reservation do |r| %>
