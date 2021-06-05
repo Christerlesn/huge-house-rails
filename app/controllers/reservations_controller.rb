@@ -21,7 +21,12 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = Reservation.all.includes(:event)
+        if @client = Client.find_by_id(params[:client_id])
+            @reservations = @client.reservations
+            #nested
+        else
+            @reservations = Reservation.all.includes(:event)
+        end
     end
 
     private

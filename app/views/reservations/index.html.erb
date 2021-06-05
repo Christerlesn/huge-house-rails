@@ -1,4 +1,8 @@
+<% if params[:client_id] %>
+<h1>All of <%= @client.first_name %>'s Reservations</h1>
+<% else %>
 <h1> Current List of Reservations </h1>
+<% end %>
 
 <% @reservations.each do |r| %>
     <ul>
@@ -8,6 +12,3 @@
     <%= link_to "Add A Vendor", new_event_vendor_path(r.event_id) %></li>
     </ul>
 <% end %>
-
-<h3><%= link_to "Make a Reservation", new_reservation_path %></h3>
-<h3><%= link_to "All Vendors", vendors_path %></h3>
