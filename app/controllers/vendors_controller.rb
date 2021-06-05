@@ -1,17 +1,12 @@
 class VendorsController < ApplicationController
 
     def new
-        if @event = Event.find_by_id(params[:event_id])
-            @vendor = @event.vendors.build
-        else
-            @vendor = Vendor.new
-        end
+        @event = Event.find_by_id(params[:event_id])
+        @vendor = @event.vendors.build
     end
 
     def create
-        @event = Event.find_by_id(params[:id])
-        @event.vendors = Vendor.new
-        @vendor = @event.vendors.build(vendor_params)
+        @vendor = Vendor.new(vendor_params)
         if @vendor.save
           redirect_to vendor_path(@vendor)
         else

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
             session[:client_id] = @client.id
             redirect_to client_path(@client)
         else
-            flash[:error] = "The Username or Passoword is Incorrect, or doesn't exist"
+            flash[:error] = "The Username or Password is Incorrect, or doesn't exist"
             render :new
         end
     end
