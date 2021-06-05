@@ -20,9 +20,10 @@ class VendorsController < ApplicationController
     def index
 
     end
+    
     private
 
     def vendor_params
-        params.require(:vendor).permit(:name, :type, :description, :event_id) #, event_attributes:[:title, :description])
+        params.require(:vendor).permit(:name, :vendor_type, :description, :event_id)
     end
 end
