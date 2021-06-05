@@ -1,6 +1,8 @@
 <h1>Event: <%= @reservation.event.title %></h1>
-<h2> Reservation Details</h2><br>
-<h3>Time Frame Reserved: <%= @reservation.start_time %> through <%= @reservation.end_time %></h3>
+
+<h2> Reservation Details</h2>
+
+<h3>Time Frame Reserved: <%= @reservation.start_time.strftime("%A, %B %-d, %Y at %l:%M %p") %> through <%= @reservation.end_time.strftime("%A, %B %-d, %Y at %l:%M %p") %></h3>
 <p> <%= @reservation.event.description %></p>
 
 
