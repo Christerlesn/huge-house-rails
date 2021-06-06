@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
+
   belongs_to :client
   belongs_to :event
   accepts_nested_attributes_for :event, :reject_if => :all_blank
@@ -6,6 +7,7 @@ class Reservation < ApplicationRecord
   validates :end_time, presence: true, uniqueness:true
   validate :reservation_date_cannot_be_in_the_past
   validate :reservation_end_date_must_be_later_than_start_time
+  validate :overlaps
 
   def reservation_date_cannot_be_in_the_past
     if start_time.present? && start_time < Date.today
@@ -19,7 +21,5 @@ class Reservation < ApplicationRecord
     end
   end
 
-  def reservation_cannot_be_double_booked
-  end
 
 end

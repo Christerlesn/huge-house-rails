@@ -16,11 +16,12 @@
 </body>
 
   <footer>
-  <h2><%= link_to "See All Reservations", reservations_path %></h2>
+
   <div>
   <% if current_user %>
   <h3><%= link_to "Make a Reservation", new_reservation_path %></h3>
-  <h2><%= link_to "See Your Reservations", client_reservations_path(@client.id) %></h2>
+  <h3><%= link_to "See All Reservations", reservations_path %></h3>
+  <h3><%= link_to "See Your Reservations", client_reservations_path(current_user) %></h3>
   <h3><%= link_to "All Vendors", vendors_path %></h3>
   <%= link_to "Logout", logout_path, method: :delete %>
     <% else %>
