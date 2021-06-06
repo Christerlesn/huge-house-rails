@@ -8,7 +8,8 @@ class ClientsController < ApplicationController
         @client = Client.new(client_params)
         if @client.save
             session[:client_id] = @client.id
-            redirect_to client_path(@client)
+            flash[:message] = "Welcome #{@client.first_name}"
+            redirect_to reservations_path
         else
             render :new
         end
