@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index]
   end
   
-  resources :vendors, only: [:index, :show]
+  resources :vendors
 
-  resources :events, only: [:index] do
-    resources :vendors, only: [:new, :create, :index]
+  resources :events do
+    resources :vendors
   end
   
 

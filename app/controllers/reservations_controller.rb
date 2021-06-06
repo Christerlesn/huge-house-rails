@@ -30,13 +30,13 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
+        @reservation = Reservation.find_by_id(params[:id])
         if @reservation.client_id = current_user
-            @reservation = Reservation.find_by_id(params[:id])
             @reservation.destroy
         else
             flash[:message] = "Please Login to delete this Reservation"
         end
-        redirect_to reservation_path(@reservation)
+        redirect_to reservations_path
     end
 
     private
