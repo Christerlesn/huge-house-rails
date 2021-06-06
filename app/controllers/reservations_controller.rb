@@ -22,10 +22,10 @@ class ReservationsController < ApplicationController
 
     def index
         if @client = Client.find_by_id(params[:client_id])
-            @reservations = @client.reservations
+            @reservations = @client.reservations.order_by_start_time
             #nested
         else
-            @reservations = Reservation.all.includes(:event)
+            @reservations = Reservation.all.order_by_start_time.includes(:event)
         end
     end
 

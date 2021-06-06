@@ -3,10 +3,12 @@ class Reservation < ApplicationRecord
   belongs_to :client
   belongs_to :event
   accepts_nested_attributes_for :event, :reject_if => :all_blank
-  validates :start_time, presence: true, uniqueness: true
-  validates :end_time, presence: true, uniqueness:true
+  validates :start_time, :end_time, presence: true, uniqueness: true
   validate :reservation_date_cannot_be_in_the_past
   validate :reservation_end_date_must_be_later_than_start_time
+
+  scope :order_by_start_time, -> {group(:id).order('start_time asc')}
+  # scope :upcoming_event, -> {select(:id).first.where('start_time, asc')}
 
   def reservation_date_cannot_be_in_the_past
     if start_time.present? && start_time < Date.today
