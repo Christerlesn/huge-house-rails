@@ -26,6 +26,8 @@ gem "simple_calendar", "~> 2.4"
 
 gem 'omniauth'
 
+gem 'dotenv-rails'
+
 gem 'omniauth-github'
 
 gem 'omniauth-rails_csrf_protection'

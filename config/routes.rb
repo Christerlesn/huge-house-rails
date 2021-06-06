@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   
   get '/auth/:provider/callback' => 'sessions#create'
+  # get '/auth/facebook/callback' => 'sessions#create'
 
   resources :reservations
   resources :clients, only: [:new, :create, :show] do
