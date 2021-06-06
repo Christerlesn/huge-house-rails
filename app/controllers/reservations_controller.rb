@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-
+    before_action :redirect_if_not_logged_in
     def new
         @reservation = Reservation.new
         @reservation.build_event
@@ -27,6 +27,16 @@ class ReservationsController < ApplicationController
         else
             @reservations = Reservation.all.includes(:event)
         end
+    end
+
+    def destroy
+        if @reservation.client_id = current_user
+            @reservation = Reservation.find_by_id(params[:id])
+            @reservation.destroy
+        else
+            flash[:message] = "Please Login to delete this Reservation"
+        end
+        redirect_to reservation_path(@reservation)
     end
 
     private

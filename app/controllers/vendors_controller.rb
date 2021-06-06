@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def new
         @event = Event.find_by_id(params[:event_id])

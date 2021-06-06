@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   
+  resources :reservations
   resources :clients, only: [:new, :create, :show] do
     resources :reservations, only: [:index]
   end
-
-  resources :reservations
+  
   resources :vendors
 
-  resources :events do
-    resources :vendors
+  resources :events, only: [:index] do
+    resources :vendors, only: [:new, :create, :index]
   end
   
 
