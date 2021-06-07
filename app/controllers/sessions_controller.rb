@@ -9,9 +9,12 @@ class SessionsController < ApplicationController
 
     def create
         if params[:provider] == 'github'
-            @client = Client.create_by_github_omniauth(auth)
+            @client = Client.find_by_create_id(uid: auth['uid']) do |c|
+                c.email = auth['info']['email']
+                c.first_name = auth['info']['name']
+            end
             session[:client_id] = @client.id
-            redirect_to client_path(@client)
+            redirect_to reservations_path
         else
             @client = Client.find_by(username: params[:client][:username])
             if @client && @client.authenticate(params[:client][:password])
@@ -28,13 +31,6 @@ class SessionsController < ApplicationController
     def destroy
         reset_session
         redirect_to '/'
-    end
-
-    def omniauth
-        @client = Client.create_by_github_omniauth(auth)
-    
-        session[:client_id] = @client.id
-        redirect_to client_path(@client)
     end
     
     private
