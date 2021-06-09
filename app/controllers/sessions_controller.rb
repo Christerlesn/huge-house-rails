@@ -10,11 +10,24 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # if params[:provider] == 'github'
-        #     @client = Client.create_by_github_omniauth(auth)
-        #     session[:client_id] = @client.id
-        #     redirect_to reservations_path
-        # else
+        if auth_hash = request.env["omniauth.auth"]
+            # raise auth_hash.inspect
+            oauth_username = request.env['omniauth.auth']['info']['nickname']
+            if @client = Client.find_by(:username => oauth_username)
+                session[:client_id] = @client.id
+
+                redirect_to reservations_path
+            else
+                @client = Client.new(:username => oauth_username, :first_name => request.env['omniauth.auth']['info']['name'], :password => SecureRandom.hex, :email => request.env['omniauth.auth']['info']['urls']['GitHub'])
+                if @client.save
+                    session[:client_id] = @client.id
+
+                    redirect_to reservations_path
+                else
+                    raise @client.errors.full_messages.inspect
+                end
+            end
+        else
             @client = Client.find_by(username: params[:client][:username])
             if @client && @client.authenticate(params[:client][:password])
                 session[:client_id] = @client.id
@@ -24,15 +37,8 @@ class SessionsController < ApplicationController
                 flash[:error] = "The Username or Password is Incorrect, or doesn't exist"
                 render :new
             end
-        # end
+        end
     end
-
-    # def omniauth
-    #     @client = Client.create_by_github_omniauth(auth)
-
-    #     session[:client_id] = @client.id
-    #     redirect_to reservations_path
-    # end
 
     def destroy
         reset_session
