@@ -31,11 +31,15 @@ class ReservationsController < ApplicationController
 
     def destroy
         @reservation = Reservation.find_by_id(params[:id])
-        if @reservation.client_id = current_user
+        if @reservation.client_id == session[:client_id]
+            # raise params.inspect
+            @reservation.event.vendors.destroy_all
+            @reservation.event.destroy
             @reservation.destroy
         else
-            flash[:message] = "Please Login to delete this Reservation"
+            flash[:message] = "Unable to Delete Others Reservation."
         end
+        # raise params.inspect
         redirect_to reservations_path
     end
 

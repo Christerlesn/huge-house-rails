@@ -10,7 +10,6 @@
 
 <%= link_to "Add A Vendor", new_event_vendor_path(@reservation.event_id) %><br>
 
-<%= form_tag reservation_path(@reservation.id), method: "delete" do %>
-    <%= submit_tag "Delete" %>
-    <% end %>
-
+<%= link_to "Delete", reservation_path(@reservation), method: :delete, data: 
+{ confirm: "Deleting this Reservation will also delete the event and vendor(s)
+ associated with it. Do you wish to continue?" } %>
