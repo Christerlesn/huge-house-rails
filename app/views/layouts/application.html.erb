@@ -12,8 +12,8 @@
     <% if current_user %>
     <div class="topnav">
     <%= link_to "Make a Reservation", new_reservation_path %>
-    <%= link_to "See All Reservations", reservations_path %>
-    <%= link_to "See Your Reservations", client_reservations_path(current_user) %>
+    <%= link_to "All Reservations", reservations_path %>
+    <%= link_to "Your Reservations", client_reservations_path(current_user) %>
     <%= link_to "All Vendors", vendors_path %>
     <%= link_to "Logout", logout_path, method: :delete %>
   </div>

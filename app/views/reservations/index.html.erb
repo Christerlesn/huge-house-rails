@@ -1,4 +1,6 @@
-<h1><%= flash[:message] %></h1>
+<h2><%= flash[:message] %></h2>
+<h2><%= flash[:notice] %></h2>
+
 <% if params[:client_id] %>
 <h1>All of <%= @client.username %>'s Reservations</h1>
 <% else %>

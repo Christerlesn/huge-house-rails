@@ -29,7 +29,7 @@ Specs:
 
 - [x] Include logout (how e.g. Devise)
 
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
     /clients/1/reservations & /events/1/vendors
@@ -42,5 +42,5 @@ Specs:
 Confirm:
 - [ ] The application is pretty DRY
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
