@@ -16,12 +16,14 @@ class SessionsController < ApplicationController
             if @client = Client.find_by(:username => oauth_username)
                 session[:client_id] = @client.id
 
+                flash[:message] = "Welcome #{@client.username}"
                 redirect_to reservations_path
             else
                 @client = Client.new(:username => oauth_username, :first_name => request.env['omniauth.auth']['info']['name'], :password => SecureRandom.hex, :email => request.env['omniauth.auth']['info']['urls']['GitHub'])
                 if @client.save
                     session[:client_id] = @client.id
 
+                    flash[:message] = "Welcome #{@client.username}"
                     redirect_to reservations_path
                 else
                     raise @client.errors.full_messages.inspect
@@ -31,7 +33,7 @@ class SessionsController < ApplicationController
             @client = Client.find_by(username: params[:client][:username])
             if @client && @client.authenticate(params[:client][:password])
                 session[:client_id] = @client.id
-                flash[:message] = "Welcome #{@client.first_name}"
+                flash[:message] = "Welcome #{@client.username}"
                 redirect_to reservations_path
             else
                 flash[:error] = "The Username or Password is Incorrect, or doesn't exist"
