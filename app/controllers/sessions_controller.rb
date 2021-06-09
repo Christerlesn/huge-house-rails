@@ -1,14 +1,12 @@
 class SessionsController < ApplicationController
 
     def welcome
+        redirect_if_logged_in
     end
 
     def new
-        if current_user
-            redirect_to reservations_path
-        else
-           @client = Client.new
-        end
+        redirect_if_logged_in
+        @client = Client.new
     end
 
     def create

@@ -37,7 +37,7 @@ class ReservationsController < ApplicationController
             @reservation.event.destroy
             @reservation.destroy
         else
-            flash[:message] = "Unable to Delete Others Reservation."
+            flash[:message] = "Unable to Delete Others Reservations."
         end
         # raise params.inspect
         redirect_to reservations_path
