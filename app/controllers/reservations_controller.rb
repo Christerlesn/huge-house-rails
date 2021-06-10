@@ -33,7 +33,6 @@ class ReservationsController < ApplicationController
             else
                 flash[:notice] = "You cannot access another user's information"
                 redirect_to reservations_path
-                # raise "Fix here!".inspect
             end
             #nested
         else
@@ -44,14 +43,10 @@ class ReservationsController < ApplicationController
     def destroy
         @reservation = Reservation.find_by_id(params[:id])
         if @reservation.client_id == session[:client_id]
-            # raise params.inspect
-            @reservation.event.vendors.destroy_all
-            @reservation.event.destroy
-            @reservation.destroy
+            @reservation.destroy_reservation_and_associations
         else
             flash[:message] = "Unable to Delete Others Reservations."
         end
-        # raise params.inspect
         redirect_to reservations_path
     end
 
