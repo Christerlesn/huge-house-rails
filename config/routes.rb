@@ -5,20 +5,21 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   
   get '/auth/:provider/callback', to: 'sessions#create'
-  # get '/auth/github/callback' => 'sessions#create'
 
-  resources :reservations
+  resources :reservations, only: [:new, :create, :show, :index]
+
   resources :clients, only: [:new, :create, :show] do
     resources :reservations, only: [:index]
   end
   
-  resources :vendors
+  resources :vendors, only: [:new, :create, :index, :show]
 
-  resources :events do
-    resources :vendors
+  resources :events, only: [:new, :create, :index, :show] do
+    resources :vendors, only: [:new, :create, :index, :show]
   end
   
-
+  delete '/reservations/:id' => 'reservations#destroy'
+  delete '/vendors/:id' => 'vendors#destroy'
   delete '/logout' => 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
