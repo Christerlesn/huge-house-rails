@@ -8,7 +8,6 @@ class Reservation < ApplicationRecord
   validate :reservation_end_date_must_be_later_than_start_time
 
   scope :order_by_start_time, -> {group(:id).order('start_time asc')}
-  # scope :upcoming_event, -> {select(:id).first.where('start_time, asc')}
 
   def reservation_date_cannot_be_in_the_past
     if start_time.present? && start_time < Date.today
