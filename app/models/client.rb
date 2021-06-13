@@ -13,4 +13,10 @@ class Client < ApplicationRecord
       client.password = SecureRandom.hex
     end
   end
+
+  def auth_client
+    self.password = self.password_digest
+    self.valid? && self.authenticate(password)
+  end
+
 end

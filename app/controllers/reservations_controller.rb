@@ -29,12 +29,12 @@ class ReservationsController < ApplicationController
     def index
         if @client = Client.find_by_id(params[:client_id])
             if @client.id == session[:client_id]
+                #nested
                 @reservations = @client.reservations.order_by_start_time
             else
                 flash[:notice] = "You cannot access another user's information"
                 redirect_to reservations_path
             end
-            #nested
         else
             @reservations = Reservation.all.order_by_start_time.includes(:event)
         end
