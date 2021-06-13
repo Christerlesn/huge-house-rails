@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
     before_action :redirect_if_not_logged_in
+
     def new
         @reservation = Reservation.new
         @reservation.build_event
@@ -13,6 +14,25 @@ class ReservationsController < ApplicationController
         else
             @reservation.build_event
             render :new
+        end
+    end
+
+    def edit
+        @reservation = Reservation.find_by_id(params[:id])
+        if @reservation.client_id == session[:client_id]
+            render :edit
+        else
+            flash[:notice] = "You cannot edit this reservation"
+            redirect_to reservations_path
+        end
+    end
+
+    def update
+        @reservation = Reservation.find_by_id(params[:id])
+        if @reservation.update(reservation_params)
+            redirect_to reservation_path(@reservation)
+        else
+            render :edit
         end
     end
 

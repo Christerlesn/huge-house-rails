@@ -6,6 +6,7 @@
 <p> <%= @reservation.event.description %></p>
 
 
+<%= link_to "Edit this Reservation", edit_reservation_path %>
 <%= link_to "See All Vendors For #{@reservation.event.title}", event_vendors_path(@reservation.event_id) %>
 
 <%= link_to "Add A Vendor", new_event_vendor_path(@reservation.event_id) %><br>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  resources :reservations, only: [:new, :create, :show, :index]
+  resources :reservations, only: [:new, :create, :show, :index, :edit, :update]
 
   resources :clients, only: [:new, :create, :show] do
     resources :reservations, only: [:index]
