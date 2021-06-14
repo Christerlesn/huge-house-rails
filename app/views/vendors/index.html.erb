@@ -1,5 +1,6 @@
 <% if params[:event_id] %>
     <h1><%= @event.title %></h1>
+    <%= link_to "Add A Vendor", new_event_vendor_path(@event.id) %>
     <% else %>
 <h1> All the Vendors Booked for the Huge House </h1>
 <% end %>

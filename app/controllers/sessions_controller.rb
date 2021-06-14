@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
             redirect_to reservations_path
         else
             @client = Client.find_by(username: params[:client][:username])
-            if @client.auth_client
+            if @client && @client.authenticate(params[:client][:password])
                 session[:client_id] = @client.id
                 flash[:message] = "Welcome #{@client.username}"
                 redirect_to reservations_path

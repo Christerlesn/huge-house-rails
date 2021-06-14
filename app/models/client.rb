@@ -14,9 +14,4 @@ class Client < ApplicationRecord
     end
   end
 
-  def auth_client
-    self.password = self.password_digest
-    self.valid? && self.authenticate(password)
-  end
-
 end
