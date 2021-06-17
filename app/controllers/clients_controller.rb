@@ -16,6 +16,11 @@ class ClientsController < ApplicationController
         end
     end
 
+    def most_active
+        @client = Client.all.most_active_client
+        raise params.inspect
+    end
+
     private
 
     def client_params

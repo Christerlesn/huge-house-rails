@@ -8,10 +8,13 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [:new, :create, :show, :index, :edit, :update]
 
+
   resources :clients, only: [:new, :create, :show] do
     resources :reservations, only: [:index]
   end
   
+  get '/client/most_active', to: 'clients#most_active'
+
   resources :vendors, only: [:new, :create, :index, :show]
 
   resources :events, only: [:new, :create, :index, :show] do
