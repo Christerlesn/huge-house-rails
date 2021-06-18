@@ -10,6 +10,10 @@
     <%= r.label :end_time %>
     <%= r.datetime_field :end_time %><br>
 
+    <p> Select an Event that already exists: </p>
+  <div>
+    <%= r.collection_select :event_id, Event.all, :id, :title, include_blank: 'Select One'%>
+
     <h2> Add Event Details </h2>
     <%= r.fields_for :event do |e| %>
         <%= e.label :title, "Event Title" %>

@@ -10,18 +10,6 @@
     <%= e.label :description %>
     <%= e.text_area :description %><br>
 
-    <h2> Set A Reservation </h2>
-    <%= e.fields_for :reservations do |r| %>
-
-        <%= r.hidden_field :event_id %> 
-        
-        <%= r.label :start_time %>
-        <%= r.datetime_field :start_time %><br>
-        
-        <%= r.label :end_time %>
-        <%= r.datetime_field :end_time %><br>
-        <% end %>
-    
     <%= e.submit "Create the Event" %>
 
 <% end %>

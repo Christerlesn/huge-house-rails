@@ -38,12 +38,12 @@ class ReservationsController < ApplicationController
 
     def show
         @reservation = Reservation.find_by_id(params[:id])
-        if @reservation.client_id == session[:client_id]
-            render :show
-        else
-            flash[:notice] = "You cannot see this reservation's details"
-            redirect_to reservations_path
-        end
+        # if @reservation.client_id == session[:client_id]
+        #     render :show
+        # else
+        #     flash[:notice] = "You cannot see this reservation's details"
+        #     redirect_to reservations_path
+        # end
     end
 
     def index

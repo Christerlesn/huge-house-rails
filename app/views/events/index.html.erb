@@ -2,6 +2,7 @@
 <% @events.each do |event| %>
     <ol>
     <li><%= event.title %></li>
+    <%= link_to "Details", event_path(event) %>
     </ol>
 <% end %>
 

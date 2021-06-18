@@ -2,16 +2,15 @@
 <h2><%= flash[:notice] %></h2>
 
 <% if params[:client_id] %>
-<h1>All of <%= @client.username %>'s Reservations</h1>
+<h2>All of <%= @client.username %>'s Reservations</h2>
 <% else %>
-<h1> Current List of Reservations </h1>
+<h2> Current List of Reservations </h2>
 <% end %>
 
 <% @reservations.each do |r| %>
     <ul>
-    <li><h2><%= r.start_time.strftime("%m/%-d/%Y %l:%M %p") %> - <%= r.end_time.strftime("%m/%-d/%Y %l:%M %p") %></h2>
-    <h3><%= r.event.title %> -  Created by: <%= r.client.username %></h3>
-    <%= link_to "Reservation Details", reservation_path(r) %>
-    <%= link_to "Add A Vendor", new_event_vendor_path(r.event_id) %></li>
+    <li><h4><%= r.start_time.strftime("%m/%-d/%Y %l:%M %p") %> - <%= r.end_time.strftime("%m/%-d/%Y %l:%M %p") %></h4>
+    <p><%= r.event.title %> -  Reserved by: <%= r.client.username %>
+    <%= link_to "Reservation Details", reservation_path(r) %></p></li>
     </ul>
 <% end %>

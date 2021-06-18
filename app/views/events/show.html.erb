@@ -2,4 +2,4 @@
 
 <p> <%= @event.description %></p>
 
-<%= @event.reservations %>
+<%= link_to "Add a Reservation", new_event_reservation_path(@event.id) %><br>
