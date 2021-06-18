@@ -1,9 +1,9 @@
 <h3>ALL EVENTS IN THE HUGE HOUSE</h3>
 <% @events.each do |event| %>
-    <ol>
+    <ul>
     <li><%= event.title %></li>
     <%= link_to "Details", event_path(event) %>
-    </ol>
+    </ul>
 <% end %>
 
 <%= link_to "All Reservations", reservations_path %>

@@ -1,15 +1,4 @@
 <%= render partial: 'layouts/errors', locals: {object: @event} %>
 
 <h2> Create A New Event </h2>
-
-<%= form_for @event do |e| %>
-    
-    <%= e.label :title, "Event Title" %>
-    <%= e.text_field :title %><br>
-    
-    <%= e.label :description %>
-    <%= e.text_area :description %><br>
-
-    <%= e.submit "Create the Event" %>
-
-<% end %>
+<%= render partial: 'form'%>

@@ -2,4 +2,10 @@
 
 <p> <%= @event.description %></p>
 
+<%= link_to "Delete", event_path(@event), method: :delete, data: 
+{ confirm: "Deleting this Event will also delete all the reservationss and vendor(s)
+ associated with it. Do you wish to continue?" } %><br>
+
 <%= link_to "Add a Reservation", new_event_reservation_path(@event.id) %><br>
+
+<%= link_to "Edit the Event", edit_event_path(@event.id) %>

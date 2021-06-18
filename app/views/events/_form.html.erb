@@ -1,0 +1,12 @@
+   
+   <%= form_for @event do |e| %>
+    <%= e.label :title, "Event Title" %>
+    <%= e.text_field :title %><br>
+    
+    <%= e.label :description %>
+    <%= e.text_area :description %><br>
+
+    <%= e.submit "Submit" %>
+
+<% end %>
+

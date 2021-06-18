@@ -20,10 +20,4 @@ class Reservation < ApplicationRecord
       errors.add(:end_time, "cannot be before/equal to start time")
     end
   end
-
-  def destroy_reservation_and_associations
-    self.event.vendors.destroy_all
-    self.event.destroy
-    self.destroy
-  end
 end

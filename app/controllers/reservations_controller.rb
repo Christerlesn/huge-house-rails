@@ -38,12 +38,6 @@ class ReservationsController < ApplicationController
 
     def show
         @reservation = Reservation.find_by_id(params[:id])
-        # if @reservation.client_id == session[:client_id]
-        #     render :show
-        # else
-        #     flash[:notice] = "You cannot see this reservation's details"
-        #     redirect_to reservations_path
-        # end
     end
 
     def index
@@ -63,7 +57,7 @@ class ReservationsController < ApplicationController
     def destroy
         @reservation = Reservation.find_by_id(params[:id])
         if @reservation.client_id == session[:client_id]
-            @reservation.destroy_reservation_and_associations
+            @reservation.destroy
         else
             flash[:message] = "Unable to Delete Others Reservations."
         end

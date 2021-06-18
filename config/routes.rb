@@ -17,12 +17,13 @@ Rails.application.routes.draw do
 
   resources :vendors, only: [:new, :create, :index, :show]
 
-  resources :events, only: [:new, :create, :index, :show] do
+  resources :events, only: [:new, :create, :index, :show, :edit, :update] do
     resources :vendors, only: [:new, :create, :index, :show]
     resources :reservations, only: [:new, :create, :show, :index, :edit, :update]
   end
   
   delete '/reservations/:id' => 'reservations#destroy'
+  delete '/events/:id' => 'events#destroy'
   delete '/vendors/:id' => 'vendors#destroy'
   delete '/logout' => 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
