@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new, :create, :index, :show] do
     resources :vendors, only: [:new, :create, :index, :show]
+    resources :reservations, only: [:new, :create, :show, :index, :edit, :update]
   end
   
   delete '/reservations/:id' => 'reservations#destroy'
