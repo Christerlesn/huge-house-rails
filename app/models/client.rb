@@ -6,7 +6,7 @@ class Client < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     has_secure_password
 
-    scope :most_active_client, -> {joins(:reservations).order('reservations.client_id').maximum('client.reservations.event_id')}
+    scope :most_active_client, -> {joins(:reservations).group('reservations.event_id').order(client_id: :desc)}
 
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(:username => auth_hash['info']['nickname']).first_or_create do |client|
