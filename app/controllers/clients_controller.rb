@@ -17,8 +17,9 @@ class ClientsController < ApplicationController
     end
 
     def most_active
-        @client = Client.most_active_client
-        raise params.inspect
+        @all_clients = Client.all
+        @client = @all_clients.most_active_client.first
+        # raise params.inspect
     end
 
     private
