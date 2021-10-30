@@ -1,5 +1,5 @@
 #HugeHouseRails
-This is a Rails project completed to meet Flatiron project requirements, in the process of becoming a software engineer.
+ is a rails event reservation website for a fictional location called the huge house, where a user can sign up/log in, make a reservation, and see all events and vendors associated with them.
 
 ##Installation
 
