@@ -5,7 +5,7 @@
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'huge-hoouse-rails'
+gem 'huge-house-rails'
 ```
 
 And then execute:
